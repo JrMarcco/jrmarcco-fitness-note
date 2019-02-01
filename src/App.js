@@ -1,13 +1,13 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import Button from 'antd/lib/button';
 import './App.css';
 
 class App extends React.Component {
-    render () {
+    render() {
         return (
-            <Switch>
-                <Route path='/login' component={ login } />
-            </Switch>
+            <div className="App">
+                <Button type="primary">Button</Button>
+            </div>
         );
     }
 }
