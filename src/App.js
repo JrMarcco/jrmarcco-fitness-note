@@ -5,8 +5,8 @@ import './App.css';
 class App extends React.Component {
     render() {
         return (
-            <div className="App">
-                <Button type="primary">Button</Button>
+            <div className={'App'}>
+                <Button type={'primary'}>Button</Button>
             </div>
         );
     }
