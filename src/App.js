@@ -1,12 +1,13 @@
 import React from 'react';
-import Button from 'antd/lib/button';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
+import Loading from './components/Loadling';
 
 class App extends React.Component {
     render() {
         return (
             <div className={'App'}>
-                <Button type={'primary'}>Button</Button>
+                <Loading />
             </div>
         );
     }
