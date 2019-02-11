@@ -4,7 +4,7 @@ import {Form, Input, Icon, Button} from 'antd';
 import {randomNum} from '../../util/commonUtils';
 import './style.css';
 
-@Form.create()
+@withRouter @Form.create()
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
