@@ -109,50 +109,10 @@ class LoginForm extends React.Component {
                             </Row>
                         )}
                     </Form.Item>
-                    <Button type={'primary'} htmlType={'submit'} className={'login-btn'}>
+                    <Button type={'primary'} htmlType={'submit'}>
                         登录
                     </Button>
                 </Form>
-            </div>
-        );
-    }
-}
-
-class LoginAndRegisterTabs extends React.Component {
-    state = {
-        tabKey: 'login'
-    };
-
-    onTabChange = (key, type) => {
-        console.log(key, type);
-        this.setState({[type]: key});
-    };
-
-    render() {
-        const tabList = [{
-            key: 'register',
-            tab: '注册',
-        }, {
-            key: 'login',
-            tab: '登录',
-        }];
-
-        const contentList = {
-            register: <p>article content</p>,
-            login: <LoginForm/>
-        };
-        return (
-            <div>
-                <Card
-                    style={{width: '100%'}}
-                    tabList={tabList}
-                    activeTabKey={this.state.tabKey}
-                    onTabChange={(key) => {
-                        this.onTabChange(key, 'tabKey');
-                    }}
-                >
-                    {contentList[this.state.tabKey]}
-                </Card>
             </div>
         );
     }
@@ -176,7 +136,15 @@ class Login extends React.Component {
                         <div>
                             <div id={'backgroundBox'}/>
                             <div className={'container'}>
-                                <LoginAndRegisterTabs/>
+                                <div>
+                                    <Card
+                                        title={'登录'}
+                                        style={{width: 300}}
+                                    >
+                                        <LoginForm/>
+                                    </Card>
+                                </div>
+
                             </div>
                         </div>
                 }
