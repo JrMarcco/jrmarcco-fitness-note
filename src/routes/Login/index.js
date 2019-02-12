@@ -87,7 +87,6 @@ class LoginForm extends React.Component {
                             } maxLength={16} placeholder={'用户名'}/>
                         )}
                     </Form.Item>
-
                     <Form.Item>
                         {getFieldDecorator('password', {
                             rules: [{required: true, message: '请输入密码'}]
@@ -97,7 +96,6 @@ class LoginForm extends React.Component {
                             } type={'password'} maxLength={16} placeholder={'密    码'}/>
                         )}
                     </Form.Item>
-
                     <Form.Item>
                         {getFieldDecorator('verificationCode', {
                             rules: [{required: true, message: '请输入验证码'}]
