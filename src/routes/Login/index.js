@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Form, Input, Icon, Button} from 'antd';
+import {Form, Input, Icon, Col, Row, Button} from 'antd';
 import {randomNum} from '../../util/commonUtils';
 import './style.css';
 
@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
     }
 
     componentDidMount() {
-        // 组件加载前生辰验证码
+        // 组件加载前生成验证码
         this.generateVerificationCode();
     }
 
@@ -74,7 +74,24 @@ class LoginForm extends React.Component {
                     })(
                         <Input prefix={
                             <Icon type={'lock'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                        } type={'password'} placeholder={'密码'}/>
+                        } type={'password'} placeholder={'密    码'}/>
+                    )}
+                </Form.Item>
+
+                <Form.Item>
+                    {getFieldDecorator('verificationCode', {
+                        rules: [{required: true, message: '验证码'}]
+                    })(
+                        <Row>
+                            <Col span={15}>
+                                <Input prefix={
+                                    <Icon type={'safety'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                                } placeholder={'验证码'}/>
+                            </Col>
+                            <Col span={9}>
+                                <canvas onClick={this.generateVerificationCode} width="80" height='39' ref={el => this.canvas = el}/>
+                            </Col>
+                        </Row>
                     )}
                 </Form.Item>
                 <Button type={'primary'} htmlType={'submit'} className={'login-form-button'}>
