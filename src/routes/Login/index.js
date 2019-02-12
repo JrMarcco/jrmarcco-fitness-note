@@ -1,18 +1,15 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Form, Input, Icon, Col, Row, Button} from 'antd';
+import {Card, Form, Col, Row, Input, Icon, Button} from 'antd';
 import Loading from '../../components/Loadling/index';
 import {randomNum} from '../../util/commonUtils';
 import './style.css';
 
 @withRouter @Form.create()
 class LoginForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            verificationCode: ''            // 验证码
-        };
-    }
+    state = {
+        verificationCode: ''            // 验证码
+    };
 
     componentDidMount() {
         // 组件加载前生成验证码
@@ -121,13 +118,50 @@ class LoginForm extends React.Component {
     }
 }
 
-class Login extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: false
+class LoginAndRegisterTabs extends React.Component {
+    state = {
+        tabKey: 'login'
+    };
+
+    onTabChange = (key, type) => {
+        console.log(key, type);
+        this.setState({[type]: key});
+    };
+
+    render() {
+        const tabList = [{
+            key: 'register',
+            tab: '注册',
+        }, {
+            key: 'login',
+            tab: '登录',
+        }];
+
+        const contentList = {
+            register: <p>article content</p>,
+            login: <LoginForm/>
         };
+        return (
+            <div>
+                <Card
+                    style={{width: '100%'}}
+                    tabList={tabList}
+                    activeTabKey={this.state.tabKey}
+                    onTabChange={(key) => {
+                        this.onTabChange(key, 'tabKey');
+                    }}
+                >
+                    {contentList[this.state.tabKey]}
+                </Card>
+            </div>
+        );
     }
+}
+
+class Login extends React.Component {
+    state = {
+        loading: false
+    };
 
     render() {
         const {loading} = this.state;
@@ -142,7 +176,7 @@ class Login extends React.Component {
                         <div>
                             <div id={'backgroundBox'}/>
                             <div className={'container'}>
-                                <LoginForm/>
+                                <LoginAndRegisterTabs/>
                             </div>
                         </div>
                 }
