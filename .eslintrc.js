@@ -19,6 +19,14 @@ module.exports = {
         'indent': ['error', 4],
         'quotes': ['error', 'single'],
         'semi': ['error', 'always'],
-        'no-unused-vars': ['off']
+        'no-unused-vars': ['off'],
+        'no-console': 'off',
+        'no-restricted-syntax': [
+            'error',
+            {
+                'selector': 'CallExpression[callee.object.name="console"][callee.property.name!=/^(log|warn|error|info|trace)$/]',
+                'message': 'Unexpected property on console object was called'
+            }
+        ]
     }
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {Form, Input, Icon, Col, Row, Button} from 'antd';
+import Loading from '../../components/Loadling/index';
 import {randomNum} from '../../util/commonUtils';
 import './style.css';
 
@@ -62,10 +63,10 @@ class LoginForm extends React.Component {
                             errors: [new Error('验证码错误')]
                         }
                     });
-
-                    return ;
+                    return;
                 }
 
+                // 执行登录动作
                 console.log(values);
             }
         });
@@ -75,47 +76,49 @@ class LoginForm extends React.Component {
         const {getFieldDecorator} = this.props.form;
 
         return (
-            <Form onSubmit={this.handleSubmit} className={'login-form'}>
-                <Form.Item>
-                    {getFieldDecorator('username', {
-                        rules: [{required: true, message: '请输入用户名'}]
-                    })(
-                        <Input prefix={
-                            <Icon type={'user'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                        } maxLength={16} placeholder={'用户名'}/>
-                    )}
-                </Form.Item>
+            <div>
+                <Form onSubmit={this.handleSubmit} className={'login-form'}>
+                    <Form.Item>
+                        {getFieldDecorator('username', {
+                            rules: [{required: true, message: '请输入用户名'}]
+                        })(
+                            <Input prefix={
+                                <Icon type={'user'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                            } maxLength={16} placeholder={'用户名'}/>
+                        )}
+                    </Form.Item>
 
-                <Form.Item>
-                    {getFieldDecorator('password', {
-                        rules: [{required: true, message: '请输入密码'}]
-                    })(
-                        <Input prefix={
-                            <Icon type={'lock'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                        } type={'password'} maxLength={16} placeholder={'密    码'}/>
-                    )}
-                </Form.Item>
+                    <Form.Item>
+                        {getFieldDecorator('password', {
+                            rules: [{required: true, message: '请输入密码'}]
+                        })(
+                            <Input prefix={
+                                <Icon type={'lock'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                            } type={'password'} maxLength={16} placeholder={'密    码'}/>
+                        )}
+                    </Form.Item>
 
-                <Form.Item>
-                    {getFieldDecorator('verificationCode', {
-                        rules: [{required: true, message: '请输入验证码'}]
-                    })(
-                        <Row>
-                            <Col span={15}>
-                                <Input prefix={
-                                    <Icon type={'safety'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                                } maxLength={4} placeholder={'验证码'}/>
-                            </Col>
-                            <Col span={9}>
-                                <canvas onClick={this.generateVerificationCode} width="80" height='39' ref={el => this.canvas = el}/>
-                            </Col>
-                        </Row>
-                    )}
-                </Form.Item>
-                <Button type={'primary'} htmlType={'submit'} className={'login-form-button'}>
-                    登录
-                </Button>
-            </Form>
+                    <Form.Item>
+                        {getFieldDecorator('verificationCode', {
+                            rules: [{required: true, message: '请输入验证码'}]
+                        })(
+                            <Row>
+                                <Col span={15}>
+                                    <Input prefix={
+                                        <Icon type={'safety'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                                    } maxLength={4} placeholder={'验证码'}/>
+                                </Col>
+                                <Col span={9}>
+                                    <canvas onClick={this.generateVerificationCode} width="80" height='39' ref={el => this.canvas = el}/>
+                                </Col>
+                            </Row>
+                        )}
+                    </Form.Item>
+                    <Button type={'primary'} htmlType={'submit'} className={'login-btn'}>
+                        登录
+                    </Button>
+                </Form>
+            </div>
         );
     }
 }
@@ -124,18 +127,27 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showBox: 'login',
-            backgroundUrl: '',
             loading: false
         };
     }
 
     render() {
+        const {loading} = this.state;
         return (
             <div id={'login-page'}>
-                <div className={'container'}>
-                    <LoginForm className={'box showBox'}/>
-                </div>
+                {
+                    loading ?
+                        <div>
+                            <Loading/>
+                        </div>
+                        :
+                        <div>
+                            <div id={'backgroundBox'}/>
+                            <div className={'container'}>
+                                <LoginForm/>
+                            </div>
+                        </div>
+                }
             </div>
         );
     }
