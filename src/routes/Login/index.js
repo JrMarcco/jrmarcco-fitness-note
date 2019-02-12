@@ -50,7 +50,25 @@ class LoginForm extends React.Component {
     };
 
     handleSubmit = (e) => {
+        e.preventDefault();
 
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                // 检验验证码
+                if (this.state.verificationCode.toUpperCase() !== values.verificationCode.toUpperCase()) {
+                    this.props.form.setFields({
+                        verificationCode: {
+                            value: values.verificationCode,
+                            errors: [new Error('验证码错误')]
+                        }
+                    });
+
+                    return ;
+                }
+
+                console.log(values);
+            }
+        });
     };
 
     render() {
@@ -64,7 +82,7 @@ class LoginForm extends React.Component {
                     })(
                         <Input prefix={
                             <Icon type={'user'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                        } placeholder={'用户名'}/>
+                        } maxLength={16} placeholder={'用户名'}/>
                     )}
                 </Form.Item>
 
@@ -74,19 +92,19 @@ class LoginForm extends React.Component {
                     })(
                         <Input prefix={
                             <Icon type={'lock'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                        } type={'password'} placeholder={'密    码'}/>
+                        } type={'password'} maxLength={16} placeholder={'密    码'}/>
                     )}
                 </Form.Item>
 
                 <Form.Item>
                     {getFieldDecorator('verificationCode', {
-                        rules: [{required: true, message: '验证码'}]
+                        rules: [{required: true, message: '请输入验证码'}]
                     })(
                         <Row>
                             <Col span={15}>
                                 <Input prefix={
                                     <Icon type={'safety'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                                } placeholder={'验证码'}/>
+                                } maxLength={4} placeholder={'验证码'}/>
                             </Col>
                             <Col span={9}>
                                 <canvas onClick={this.generateVerificationCode} width="80" height='39' ref={el => this.canvas = el}/>
