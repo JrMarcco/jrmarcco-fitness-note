@@ -51,7 +51,6 @@ class RegisterForm extends React.Component {
 
     render() {
         const {getFieldDecorator} = this.props.form;
-
         return (
             <div>
                 <Form onSubmit={this.handleSubmit}>
@@ -88,12 +87,14 @@ class IndexContent extends React.Component {
             <div>
                 <Row>
                     <Col span={12} offset={6}>
+                        <div className={'title'}>
+                            Use
+                            <span> Fitness Note</span>
+                        </div>
+                    </Col>
+                    <Col span={12} offset={6}>
                         <RegisterForm/>
                     </Col>
-                    <Col span={12} offset={6}>Content</Col>
-                    <Col span={12} offset={6}>Content</Col>
-                    <Col span={12} offset={6}>Content</Col>
-                    <Col span={12} offset={6}>Content</Col>
                 </Row>
             </div>
         );
@@ -112,7 +113,16 @@ class Index extends React.Component {
                     <Content className={'content'}>
                         <IndexContent/>
                     </Content>
-                    <Footer>Footer</Footer>
+                    <Footer className={'footer'}>
+                        <div className={'footer-wrap'}>
+                            <Row>
+                                <Col span={24}>Footer</Col>
+                            </Row>
+                        </div>
+                        <div className={'bottom-bar'}>
+                            Made by X
+                        </div>
+                    </Footer>
                 </Layout>
             </div>
         );
