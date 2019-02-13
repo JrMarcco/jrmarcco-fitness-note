@@ -1,8 +1,9 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Card, Form, Col, Row, Input, Icon, Button} from 'antd';
+import {Card, Form, Col, Row, Input, Icon, Button, message} from 'antd';
 import Loading from '../../components/Loadling/index';
 import {randomNum} from '../../util/commonUtils';
+import axios from 'axios';
 import './style.css';
 
 @withRouter @Form.create()
@@ -53,18 +54,24 @@ class LoginForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 // 检验验证码
-                if (this.state.verificationCode.toUpperCase() !== values.verificationCode.toUpperCase()) {
-                    this.props.form.setFields({
-                        verificationCode: {
-                            value: values.verificationCode,
-                            errors: [new Error('验证码错误')]
+                // if (this.state.verificationCode.toUpperCase() !== values.verificationCode.toUpperCase()) {
+                //     this.props.form.setFields({
+                //         verificationCode: {
+                //             value: values.verificationCode,
+                //             errors: [new Error('验证码错误')]
+                //         }
+                //     });
+                //     return;
+                // }
+                // 执行登录动作
+                axios.post('http://localhost:18002/auth/jwt/getToken', values)
+                    .then((result) => {
+                        if (result.data.code === '000000') {
+                            message.success('登录成功');
+                        } else {
+                            message.error(result.data.message);
                         }
                     });
-                    return;
-                }
-
-                // 执行登录动作
-                console.log(values);
             }
         });
     };
