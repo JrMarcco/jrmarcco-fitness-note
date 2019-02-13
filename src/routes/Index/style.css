@@ -1,0 +1,17 @@
+#index-page {
+}
+
+#index-page .header {
+    height: 90px;
+    background-color: white;
+}
+
+#index-page .header-row {
+    margin: 15px;
+}
+
+#index-page .login-btn {
+    float: right;
+    width: 120px;
+    height: 50px;
+}

@@ -137,10 +137,7 @@ class Login extends React.Component {
                             <div id={'backgroundBox'}/>
                             <div className={'container'}>
                                 <div>
-                                    <Card
-                                        title={'登录'}
-                                        style={{width: 300}}
-                                    >
+                                    <Card title={'登录'} style={{width: 300}}>
                                         <LoginForm/>
                                     </Card>
                                 </div>

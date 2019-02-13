@@ -9,7 +9,7 @@ function isAuthenticated() {
 const PrivateRoute = ({component: Component, ...rest}) => (
     <Route {...rest} render={(props) => (
         !!isAuthenticated() ?
-            <Component {...props} />
+            <Component {...props}/>
             :
             <Redirect to={{pathname: '/login', state: {from: props.location}}}/>
     )}/>
