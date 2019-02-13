@@ -97,6 +97,7 @@
 #index-page .author {
     font-size: 20px;
     color: #FFFFFF;
+    text-decoration: unset;
 }
 
 /* 覆盖 antd 默认样式 */
