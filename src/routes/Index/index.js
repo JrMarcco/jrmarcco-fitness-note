@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Layout, Row, Col, Button, Form, Input, Icon} from 'antd';
+import {Layout, Row, Col, Button, Form, Input, Icon, Divider } from 'antd';
 import './style.css';
 
 const {
@@ -20,6 +20,7 @@ class IndexHeader extends React.Component {
                         <Button onClick={() => this.props.history.push('login')} size={'large'} className={'login-btn'}>登录</Button>
                     </Col>
                 </Row>
+                <Divider className={'header-line'} />
             </div>
         );
     }
@@ -100,7 +101,7 @@ class Index extends React.Component {
     render() {
         return (
             <div id={'index-page'}>
-                <Layout>
+                <Layout className={'layout'}>
                     <Header className={'header'}>
                         <IndexHeader/>
                     </Header>

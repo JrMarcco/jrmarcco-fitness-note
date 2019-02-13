@@ -1,24 +1,35 @@
 #index-page {
 }
 
+#index-page .layout {
+    background-color: white;
+}
+
 #index-page .header {
     position: fixed;
     z-index: 10;
     width: 100%;
-    height: 90px;
-    background-color: white;
-}
-
-#index-page .content {
-    position: relative;
-    margin-top: 90px;
-    width: 100%;
-    text-align: center;
+    height: 85px;
     background-color: white;
 }
 
 #index-page .header-row {
     margin: 15px;
+}
+
+#index-page .header-line {
+    position: absolute;
+    left: 0;
+    top: 65px;
+    border-color: #000000;
+}
+
+#index-page .content {
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+    background-color: white;
 }
 
 #index-page .login-btn {
