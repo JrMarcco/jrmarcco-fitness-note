@@ -67,7 +67,6 @@ class LoginForm extends React.Component {
                 // 执行登录动作
                 Axios.post('http://localhost:18002/auth/jwt/getToken', values)
                     .then(result => {
-                        console.log(result);
                         if (result.code === '000000') {
                             message.success('登录成功');
                         } else {
