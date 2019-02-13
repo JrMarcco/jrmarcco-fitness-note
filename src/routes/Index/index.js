@@ -73,7 +73,7 @@ class RegisterForm extends React.Component {
                         )}
                     </Form.Item>
                     <Button type={'primary'} htmlType={'submit'} className={'register-btn'}>
-                        注册
+                        立即注册
                     </Button>
                 </Form>
             </div>
