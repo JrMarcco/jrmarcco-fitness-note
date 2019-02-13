@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {Card, Form, Col, Row, Input, Icon, Button, message} from 'antd';
 import Loading from '../../components/Loadling/index';
 import {randomNum} from '../../util/commonUtils';
-import axios from 'axios';
+import Axios from '../../util/axiosUtils';
 import './style.css';
 
 @withRouter @Form.create()
@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
                 }
 
                 // 执行登录动作
-                axios.post('http://localhost:18002/auth/jwt/getToken', values)
+                Axios.post('http://localhost:18002/auth/jwt/getToken', values)
                     .then(result => {
                         console.log(result);
                         if (result.code === '000000') {
