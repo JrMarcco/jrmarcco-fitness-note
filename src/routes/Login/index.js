@@ -109,7 +109,7 @@ class LoginForm extends React.Component {
                             </Row>
                         )}
                     </Form.Item>
-                    <Button type={'primary'} htmlType={'submit'}>
+                    <Button htmlType={'submit'} className={'login-btn'}>
                         登录
                     </Button>
                 </Form>
@@ -134,14 +134,10 @@ class Login extends React.Component {
                         </div>
                         :
                         <div>
-                            <div id={'backgroundBox'}/>
-                            <div className={'container'}>
-                                <div>
-                                    <Card title={'登录'} style={{width: 300}}>
-                                        <LoginForm/>
-                                    </Card>
-                                </div>
-
+                            <div>
+                                <Card className={'login-card'}>
+                                    <LoginForm/>
+                                </Card>
                             </div>
                         </div>
                 }
