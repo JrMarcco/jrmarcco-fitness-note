@@ -12,6 +12,7 @@
 }
 
 #login-page .login-card {
+    border: solid 1px #cdcdcd;
     height: 350px;
     padding-top: 32px;
     width: 360px;
