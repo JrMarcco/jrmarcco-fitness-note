@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Layout, Row, Col, Button} from 'antd';
+import {Layout, Row, Col, Button, Form, Input, Icon} from 'antd';
 import './style.css';
 
 const {
@@ -25,6 +25,76 @@ class IndexHeader extends React.Component {
     }
 }
 
+@Form.create()
+class RegisterForm extends React.Component {
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                if (values.password.length < 6) {
+                    this.props.form.setFields({
+                        password: {
+                            value: values.password,
+                            errors: [new Error('密码需包含至少6个字符')]
+                        }
+                    });
+                    return;
+                }
+                // 执行注册动作
+                console.log(values);
+            }
+        });
+    };
+
+    render() {
+        const {getFieldDecorator} = this.props.form;
+
+        return (
+            <div>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Item>
+                        {getFieldDecorator('username', {
+                            rules: [{required: true, message: '请输入用户名'}]
+                        })(
+                            <Input prefix={
+                                <Icon type={'user'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                            } maxLength={16} placeholder={'用户名'}/>
+                        )}
+                    </Form.Item>
+                    <Form.Item>
+                        {getFieldDecorator('password', {
+                            rules: [{required: true, message: '请输入密码'}]
+                        })(
+                            <Input prefix={
+                                <Icon type={'lock'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                            } type={'password'} maxLength={16} placeholder={'密    码'}/>
+                        )}
+                    </Form.Item>
+                    <Button type={'primary'} htmlType={'submit'} className={'register-btn'}>
+                        注册
+                    </Button>
+                </Form>
+            </div>
+        );
+    }
+}
+
+class IndexContent extends React.Component {
+    render() {
+        return (
+            <div>
+                <Row>
+                    <Col span={12} offset={6}>
+                        <RegisterForm/>
+                    </Col>
+                </Row>
+            </div>
+        );
+    }
+}
+
 class Index extends React.Component {
 
     render() {
@@ -34,7 +104,9 @@ class Index extends React.Component {
                     <Header className={'header'}>
                         <IndexHeader/>
                     </Header>
-                    <Content>Content</Content>
+                    <Content className={'content'}>
+                        <IndexContent/>
+                    </Content>
                     <Footer>Footer</Footer>
                 </Layout>
             </div>
