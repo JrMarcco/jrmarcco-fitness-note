@@ -1,7 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {Card, Form, Col, Row, Input, Icon, Button, message} from 'antd';
-import Loading from '../../components/Loadling/index';
 import {randomNum} from '../../util/commonUtils';
 import Axios from '../../util/axiosUtils';
 import './style.css';
@@ -127,28 +126,14 @@ class LoginForm extends React.Component {
 }
 
 class Login extends React.Component {
-    state = {
-        loading: false
-    };
-
     render() {
-        const {loading} = this.state;
         return (
             <div id={'login-page'}>
-                {
-                    loading ?
-                        <div>
-                            <Loading/>
-                        </div>
-                        :
-                        <div>
-                            <div>
-                                <Card className={'login-card'}>
-                                    <LoginForm/>
-                                </Card>
-                            </div>
-                        </div>
-                }
+                <div>
+                    <Card className={'login-card'}>
+                        <LoginForm/>
+                    </Card>
+                </div>
             </div>
         );
     }
