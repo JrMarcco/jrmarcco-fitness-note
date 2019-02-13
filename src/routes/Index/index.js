@@ -16,8 +16,8 @@ class IndexHeader extends React.Component {
                     <Col span={8}>
                         <h2>Fitness Note</h2>
                     </Col>
-                    <Col span={4} offset={12}>
-                        <Button onClick={() => this.props.history.push('login')} size={'large'} className={'login-btn'}>登录</Button>
+                    <Col span={1} offset={15}>
+                        <a onClick={() => this.props.history.push('login')} className={'login-btn'}>登录</a>
                     </Col>
                 </Row>
                 <Divider className={'header-line'} />
@@ -90,6 +90,10 @@ class IndexContent extends React.Component {
                     <Col span={12} offset={6}>
                         <RegisterForm/>
                     </Col>
+                    <Col span={12} offset={6}>Content</Col>
+                    <Col span={12} offset={6}>Content</Col>
+                    <Col span={12} offset={6}>Content</Col>
+                    <Col span={12} offset={6}>Content</Col>
                 </Row>
             </div>
         );
