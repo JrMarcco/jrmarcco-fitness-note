@@ -54,15 +54,16 @@ class LoginForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 // 检验验证码
-                // if (this.state.verificationCode.toUpperCase() !== values.verificationCode.toUpperCase()) {
-                //     this.props.form.setFields({
-                //         verificationCode: {
-                //             value: values.verificationCode,
-                //             errors: [new Error('验证码错误')]
-                //         }
-                //     });
-                //     return;
-                // }
+                if (this.state.verificationCode.toUpperCase() !== values.verificationCode.toUpperCase()) {
+                    this.props.form.setFields({
+                        verificationCode: {
+                            value: values.verificationCode,
+                            errors: [new Error('验证码错误')]
+                        }
+                    });
+                    return;
+                }
+
                 // 执行登录动作
                 axios.post('http://localhost:18002/auth/jwt/getToken', values)
                     .then(result => {
