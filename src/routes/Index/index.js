@@ -120,7 +120,8 @@ class Index extends React.Component {
                             </Row>
                         </div>
                         <div className={'bottom-bar'}>
-                            Made by X
+                            Made by
+                            <a target={'_blank'} className={'author'} href={'https://github.com/JrMarcco'}> JrMarcco</a>
                         </div>
                     </Footer>
                 </Layout>

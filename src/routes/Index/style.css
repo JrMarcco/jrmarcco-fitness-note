@@ -44,7 +44,7 @@
     top: 100%;
     width: 120px;
     height: 2px;
-    background-color: #878787;
+    background-color: #9b9b9b;
     transition: all 0.3s ease;
     transform: scale(0.85);
 }
@@ -78,6 +78,7 @@
     width: 100%;
     background-color: #4b4b4b;
     color: #FFFFFF;
+    font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
 #index-page .footer .footer-wrap {
@@ -91,6 +92,11 @@
     text-align: center;
     font-size: 16px;
     padding: 16px 24px;
+}
+
+#index-page .author {
+    font-size: 20px;
+    color: #FFFFFF;
 }
 
 /* 覆盖 antd 默认样式 */
