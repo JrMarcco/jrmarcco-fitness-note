@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Card, Form, Col, Row, Input, Icon, Button, message} from 'antd';
+import {Card, Form, Col, Row, Input, Icon, Button, Spin, message} from 'antd';
 import {randomNum} from '../../util/commonUtils';
 import Axios from '../../util/axiosUtils';
 import './style.css';
@@ -8,6 +8,7 @@ import './style.css';
 @withRouter @Form.create()
 class LoginForm extends React.Component {
     state = {
+        loading: false,
         verificationCode: ''            // 验证码
     };
 
@@ -47,9 +48,12 @@ class LoginForm extends React.Component {
         });
     };
 
+    toggle = (value) => {
+        this.setState({loading: value});
+    };
+
     handleSubmit = (e) => {
         e.preventDefault();
-
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 // 检验验证码
@@ -60,10 +64,12 @@ class LoginForm extends React.Component {
                             errors: [new Error('验证码错误')]
                         }
                     });
+                    this.generateVerificationCode();
                     return;
                 }
 
                 // 执行登录动作
+                this.toggle(true);
                 Axios.post('http://localhost:18002/auth/jwt/getToken', values)
                     .then(result => {
                         if (result.code === '000000') {
@@ -81,45 +87,48 @@ class LoginForm extends React.Component {
 
         return (
             <div>
-                <Form onSubmit={this.handleSubmit} className={'login-form'}>
-                    <Form.Item>
-                        {getFieldDecorator('username', {
-                            rules: [{required: true, message: '请输入用户名'}]
-                        })(
-                            <Input prefix={
-                                <Icon type={'user'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                            } maxLength={16} placeholder={'用户名'}/>
-                        )}
-                    </Form.Item>
-                    <Form.Item>
-                        {getFieldDecorator('password', {
-                            rules: [{required: true, message: '请输入密码'}]
-                        })(
-                            <Input prefix={
-                                <Icon type={'lock'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                            } type={'password'} maxLength={16} placeholder={'密    码'}/>
-                        )}
-                    </Form.Item>
-                    <Form.Item>
-                        {getFieldDecorator('verificationCode', {
-                            rules: [{required: true, message: '请输入验证码'}]
-                        })(
-                            <Row>
-                                <Col span={15}>
-                                    <Input prefix={
-                                        <Icon type={'safety'} style={{color: 'rgba(0,0,0,.25)'}}/>
-                                    } maxLength={4} placeholder={'验证码'}/>
-                                </Col>
-                                <Col span={9}>
-                                    <canvas onClick={this.generateVerificationCode} width="80" height='39' ref={el => this.canvas = el}/>
-                                </Col>
-                            </Row>
-                        )}
-                    </Form.Item>
-                    <Button htmlType={'submit'} className={'login-btn'}>
-                        登录
-                    </Button>
-                </Form>
+                <Spin size={'large'} spinning={this.state.loading}>
+                    <Form onSubmit={this.handleSubmit} className={'login-form'}>
+                        <Form.Item>
+                            {getFieldDecorator('username', {
+                                rules: [{required: true, message: '请输入用户名'}]
+                            })(
+                                <Input prefix={
+                                    <Icon type={'user'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                                } maxLength={16} placeholder={'用户名'}/>
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('password', {
+                                rules: [{required: true, message: '请输入密码'}]
+                            })(
+                                <Input prefix={
+                                    <Icon type={'lock'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                                } type={'password'} maxLength={16} placeholder={'密    码'}/>
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('verificationCode', {
+                                rules: [{required: true, message: '请输入验证码'}]
+                            })(
+                                <Row>
+                                    <Col span={15}>
+                                        <Input prefix={
+                                            <Icon type={'safety'} style={{color: 'rgba(0,0,0,.25)'}}/>
+                                        } maxLength={4} placeholder={'验证码'}/>
+                                    </Col>
+                                    <Col span={9}>
+                                        <canvas onClick={this.generateVerificationCode} width="80" height='39' ref={el => this.canvas = el}/>
+                                    </Col>
+                                </Row>
+                            )}
+                        </Form.Item>
+
+                        <Button htmlType={'submit'} className={'login-btn'}>
+                            登录
+                        </Button>
+                    </Form>
+                </Spin>
             </div>
         );
     }
