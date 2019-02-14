@@ -1,5 +1,8 @@
+.loading-hide {
+    display: none;
+}
 
-#loading {
+.loading-show {
     display: inline-block;
     position: absolute;
     top: 50%;
@@ -8,14 +11,18 @@
     z-index: 4;
 }
 
-#container {
+.container-hide {
+
+}
+
+.container-show {
     pointer-events: none;
     user-select: none;
     overflow: hidden;
     opacity: 0.4;
 }
 
-#loading .dot {
+.loading-show .dot {
     width: 16px;
     height: 16px;
     background: #ffffff;
@@ -24,27 +31,27 @@
     animation: slide 1s infinite;
 }
 
-#loading .dot:nth-child(1) {
+.loading-show .dot:nth-child(1) {
     animation-delay: 0.1s;
     background: #000000;
 }
 
-#loading .dot:nth-child(2) {
+.loading-show .dot:nth-child(2) {
     animation-delay: 0.2s;
     background: #323232;
 }
 
-#loading .dot:nth-child(3) {
+.loading-show .dot:nth-child(3) {
     animation-delay: 0.3s;
     background: #5f5f5f;
 }
 
-#loading .dot:nth-child(4) {
+.loading-show .dot:nth-child(4) {
     animation-delay: 0.4s;
     background: #969696;
 }
 
-#loading .dot:nth-child(5) {
+.loading-show .dot:nth-child(5) {
     animation-delay: 0.5s;
     background: #cdcdcd;
 }
