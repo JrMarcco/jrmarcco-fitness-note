@@ -2,31 +2,21 @@ import React from 'react';
 import './style.css';
 
 class Loading extends React.Component {
-
-    renderLoading = (suffix) => {
+    render() {
         return (
             <div>
-                <div className={'loading-' + suffix}>
+                <div className={'loading-show'}>
                     <span className={'dot'} />
                     <span className={'dot'} />
                     <span className={'dot'} />
                     <span className={'dot'} />
                     <span className={'dot'} />
                 </div>
-                <div className={'container-' + suffix}>
+                <div className={'container-show'}>
                     {this.props.children}
                 </div>
             </div>
         );
-    };
-
-    render() {
-        const {loading} = this.props.loading;
-        if (loading) {
-            return this.renderLoading('show');
-        } else {
-            return this.renderLoading('hide');
-        }
     }
 }
 
