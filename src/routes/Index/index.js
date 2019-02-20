@@ -17,7 +17,7 @@ class IndexHeader extends React.Component {
                         <h2>Fitness Note</h2>
                     </Col>
                     <Col span={8} offset={8}>
-                        <a onClick={() => this.props.history.push('login')} className={'login-btn'}>登录</a>
+                        <a onClick={() => this.props.history.push('login')} className={'login-btn'}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录</a>
                     </Col>
                 </Row>
                 <Divider className={'header-line'} />

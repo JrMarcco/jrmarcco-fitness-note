@@ -43,6 +43,8 @@
 
 #index-page .login-btn {
     float: right;
+    position: relative;
+    margin-right: 30px;
     color: #4b4b4b;
 }
 
