@@ -1,11 +1,12 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import {inject} from 'mobx-react';
 import {Card, Form, Col, Row, Input, Icon, Button, Spin, message} from 'antd';
 import {randomNum} from '../../util/commonUtils';
 import Axios from '../../util/axiosUtils';
 import './style.css';
 
-@withRouter @Form.create()
+@withRouter @inject('appStore') @Form.create()
 class LoginForm extends React.Component {
     state = {
         loading: false,
@@ -72,11 +73,17 @@ class LoginForm extends React.Component {
                 this.toggle(true);
                 Axios.post('http://localhost:18002/auth/jwt/getToken', values)
                     .then(result => {
-                        if (result.code === '000000') {
+                        this.toggle(false);
+                        if (result.code === '0000') {
+                            this.props.appStore.toggleLogin(true, result.data);
                             message.success('登录成功');
                         } else {
                             message.error(result.message);
                         }
+                    })
+                    .catch(e => {
+                        this.toggle(false);
+                        message.error(e.message);
                     });
             }
         });
