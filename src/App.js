@@ -11,7 +11,7 @@ class App extends React.Component {
             <Switch>
                 <Route exact path={'/'} component={Index}/>
                 <Route path={'/login'} component={Login}/>
-                <PrivateRoute path={'/note'}/>
+                <PrivateRoute path={'/note/index'}/>
             </Switch>
         );
     }

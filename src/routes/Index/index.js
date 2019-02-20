@@ -16,7 +16,7 @@ class IndexHeader extends React.Component {
                     <Col span={8}>
                         <h2>Fitness Note</h2>
                     </Col>
-                    <Col span={1} offset={15}>
+                    <Col span={8} offset={8}>
                         <a onClick={() => this.props.history.push('login')} className={'login-btn'}>登录</a>
                     </Col>
                 </Row>
@@ -53,7 +53,7 @@ class RegisterForm extends React.Component {
         const {getFieldDecorator} = this.props.form;
         return (
             <div>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit} className={'register-form'}>
                     <Form.Item>
                         {getFieldDecorator('username', {
                             rules: [{required: true, message: '请输入用户名'}]

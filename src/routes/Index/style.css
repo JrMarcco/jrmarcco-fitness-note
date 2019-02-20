@@ -29,15 +29,24 @@
     margin-top: 100px;
     width: 100%;
     text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    -moz-box-align: center;
+    -webkit-box-align: center;
     background-color: #ffffff;
 }
 
+#index-page .register-form {
+    width: 500px;
+    padding: 0 25px 0 25px;
+}
+
 #index-page .login-btn {
-    margin-left: 45px;
+    float: right;
     color: #4b4b4b;
 }
 
-#index-page .login-btn:after, #index-page .login-btn:before {
+#index-page .login-btn:before, #index-page .login-btn:after {
     content: '';
     display: block;
     position: absolute;
