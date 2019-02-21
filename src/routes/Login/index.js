@@ -141,8 +141,12 @@ class LoginForm extends React.Component {
     }
 }
 
+@inject('appStore')
 class Login extends React.Component {
     render() {
+        if (this.props.appStore.authenticated) {
+            this.props.history.push('home');
+        }
         return (
             <div id={'login-page'}>
                 <div>
