@@ -44,20 +44,8 @@
 #index-page .login-btn {
     float: right;
     position: relative;
-    margin-right: 30px;
+    margin-top: 10px;
     color: #4b4b4b;
-}
-
-#index-page .login-btn:before, #index-page .login-btn:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 100%;
-    width: 120px;
-    height: 2px;
-    background-color: #9b9b9b;
-    transition: all 0.3s ease;
-    transform: scale(0.85);
 }
 
 #index-page .login-btn:hover:before {
