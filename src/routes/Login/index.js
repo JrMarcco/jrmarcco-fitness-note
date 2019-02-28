@@ -14,7 +14,11 @@ class LoginForm extends React.Component {
     };
 
     componentDidMount() {
-        // 组件加载前生成验证码
+        // 组件加载前判断登录状态
+        if (this.props.appStore.authenticated) {
+            this.props.history.push('/note/index');
+        }
+
         this.generateVerificationCode();
     }
 
@@ -146,9 +150,6 @@ class LoginForm extends React.Component {
 @withRouter @inject('appStore')
 class Login extends React.Component {
     render() {
-        if (this.props.appStore.authenticated) {
-            this.props.history.push('/note/index');
-        }
         return (
             <div id={'login-page'}>
                 <div>
