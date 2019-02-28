@@ -14,7 +14,7 @@ class IndexHeader extends React.Component {
             <div>
                 <Row className={'header-row'}>
                     <Col span={8}>
-                        <h2>Fitness Note</h2>
+                        <h2 className={'header-title'}>Fitness Note</h2>
                     </Col>
                     <Col span={8} offset={8}>
                         <Button ghost onClick={() => this.props.history.push('/login')} size={'large'} className={'login-btn'}>登录</Button>
