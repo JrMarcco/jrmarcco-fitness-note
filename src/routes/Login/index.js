@@ -4,7 +4,7 @@ import {inject} from 'mobx-react';
 import {Card, Form, Col, Row, Input, Icon, Button, Spin, message} from 'antd';
 import {randomNum} from '../../util/commonUtils';
 import Axios from '../../util/axiosUtils';
-import './style.css';
+import './index.css';
 
 @withRouter @inject('appStore') @Form.create()
 class LoginForm extends React.Component {
@@ -76,7 +76,9 @@ class LoginForm extends React.Component {
                         this.toggle(false);
                         if (result.code === '0000') {
                             this.props.appStore.toggleLogin(true, result.data);
-                            message.success('登录成功');
+
+                            const {from} = this.props.location.state || {from: {pathname: '/note/index'}};
+                            this.props.history.push(from);
                         } else {
                             message.error(result.message);
                         }
@@ -141,11 +143,11 @@ class LoginForm extends React.Component {
     }
 }
 
-@inject('appStore')
+@withRouter @inject('appStore')
 class Login extends React.Component {
     render() {
         if (this.props.appStore.authenticated) {
-            this.props.history.push('home');
+            this.props.history.push('/note/index');
         }
         return (
             <div id={'login-page'}>

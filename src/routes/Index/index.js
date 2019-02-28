@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {Layout, Row, Col, Button, Form, Input, Icon, Divider } from 'antd';
-import './style.css';
+import './index.css';
 
 const {
     Header, Footer, Content,
@@ -17,7 +17,7 @@ class IndexHeader extends React.Component {
                         <h2>Fitness Note</h2>
                     </Col>
                     <Col span={8} offset={8}>
-                        <Button ghost onClick={() => this.props.history.push('login')} size={'large'} className={'login-btn'}>登录</Button>
+                        <Button ghost onClick={() => this.props.history.push('/login')} size={'large'} className={'login-btn'}>登录</Button>
                     </Col>
                 </Row>
                 <Divider className={'header-line'} />

@@ -17,5 +17,5 @@ function _set(key, value) {
 }
 
 function _get(key) {
-    sessionStorage.getItem(key);
+    return sessionStorage.getItem(key);
 }

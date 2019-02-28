@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {authenticated, authSuccess, logout} from '../util/sessionUtils';
+import {authenticated, authSuccess, logout} from '../util/authUtils';
 
 class AppStore {
     @observable authenticated = !!authenticated();
