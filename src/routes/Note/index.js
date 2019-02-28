@@ -1,5 +1,6 @@
 import React from 'react';
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
+import NoteHeader from '../../components/NoteHeader/index';
 import './index.css';
 
 const {
@@ -18,7 +19,7 @@ class NoteIndex extends React.Component {
     render() {
         return (
             <Layout style={{minHeight: '100vh'}}>
-
+                <NoteHeader/>
             </Layout>
         );
     }
