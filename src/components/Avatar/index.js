@@ -19,7 +19,7 @@ class SidebarAvatar extends React.Component {
                 <Popover placement="rightBottom" title={(
                     // Popover Title
                     <div id={'popover-title'}>
-                        <Avatar size={64} icon="user"/>
+                        <Avatar size={80} icon="user" src={'http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM7DhChkicuO7ynXOH1GqkBaD3SXYf5WXQSCsWM1YF0UzrMMqe0iaYxe5mvNM6MHibBhwTd5GAN3wjdEg/132'}/>
                     </div>
                 )} content={(
                     // Popover Content
@@ -31,7 +31,7 @@ class SidebarAvatar extends React.Component {
                         </p>
                     </div>
                 )} trigger="click">
-                    <Avatar size={48} icon="user"/>
+                    <Avatar size={48} icon="user" src={'http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM7DhChkicuO7ynXOH1GqkBaD3SXYf5WXQSCsWM1YF0UzrMMqe0iaYxe5mvNM6MHibBhwTd5GAN3wjdEg/132'}/>
                 </Popover>
             </div>
         );
