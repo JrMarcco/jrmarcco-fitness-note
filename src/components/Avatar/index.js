@@ -1,13 +1,13 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import {inject} from 'mobx-react';
 import {Popover, Avatar, Button, Icon} from 'antd';
-import {logout} from '../../util/authUtils';
 import './index.css';
 
-@withRouter
+@withRouter @inject('appStore')
 class SidebarAvatar extends React.Component {
     logout = () => {
-        logout();
+        this.props.appStore.toggleAuth(false);
         this.props.history.push('/');
     };
 

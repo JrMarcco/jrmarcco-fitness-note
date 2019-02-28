@@ -75,7 +75,7 @@ class LoginForm extends React.Component {
                     .then(result => {
                         this.toggle(false);
                         if (result.code === '0000') {
-                            this.props.appStore.toggleLogin(true, result.data);
+                            this.props.appStore.toggleAuth(true, result.data);
 
                             const {from} = this.props.location.state || {from: {pathname: '/note/index'}};
                             this.props.history.push(from);

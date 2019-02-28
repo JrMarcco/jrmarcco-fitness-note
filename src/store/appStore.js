@@ -5,7 +5,7 @@ class AppStore {
     @observable authenticated = !!authenticated();
     @observable currentUser = {};
 
-    @action toggleLogin(authenticated, data = {}) {
+    @action toggleAuth(authenticated, data = {}) {
         this.currentUser = data.user;
         if (authenticated) {
             authSuccess(data.accessToken);
