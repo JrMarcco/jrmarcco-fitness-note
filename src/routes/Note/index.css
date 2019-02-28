@@ -5,13 +5,3 @@
     height: 100vh;
     border-right: solid 1px #e1e1e1;
 }
-
-#note-sidebar .avatar {
-    position: fixed;
-    width: 75px;
-    height: 75px;
-    border-top: solid 1px #cfcfcf;
-    bottom: 0;
-    text-align: center;
-    padding: 12px
-}

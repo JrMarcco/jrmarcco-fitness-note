@@ -1,0 +1,21 @@
+#avatar {
+    position: fixed;
+    width: 75px;
+    height: 75px;
+    border-top: solid 1px #cfcfcf;
+    bottom: 0;
+    text-align: center;
+    padding: 12px
+}
+
+#popover-title {
+    text-align: center;
+}
+
+#popover-content {
+    width: 300px;
+}
+
+#popover-content .btn {
+    border: unset;
+}
