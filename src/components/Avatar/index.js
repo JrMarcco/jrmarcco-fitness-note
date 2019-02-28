@@ -6,7 +6,9 @@ import './index.css';
 
 @withRouter @inject('appStore')
 class SidebarAvatar extends React.Component {
-    logout = () => {
+    logout = (e) => {
+        e.preventDefault();
+
         this.props.appStore.toggleAuth(false);
         this.props.history.push('/');
     };
