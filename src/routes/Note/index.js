@@ -1,10 +1,10 @@
 import React from 'react';
-import {Layout, Menu, Breadcrumb, Icon} from 'antd';
+import {Layout, Icon} from 'antd';
 import NoteHeader from '../../components/NoteHeader/index';
 import './index.css';
 
 const {
-    Header, Content, Footer, Sider,
+    Header, Content, Sider, Footer
 } = Layout;
 
 class NoteIndex extends React.Component {
@@ -18,8 +18,13 @@ class NoteIndex extends React.Component {
 
     render() {
         return (
-            <Layout style={{minHeight: '100vh'}}>
+            <Layout>
                 <NoteHeader/>
+                <Layout id={'note-index'}>
+                    <Sider>Sider</Sider>
+                    <Content>Content</Content>
+                </Layout>
+                <Footer>Footer</Footer>
             </Layout>
         );
     }

@@ -1,5 +1,11 @@
-#components-layout-demo-side .logo {
-    height: 32px;
-    background: rgba(255,255,255,.2);
-    margin: 16px;
+#note-index {
+    position: relative;
+    margin-top: 85px;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+}
+
+#note-index .note-menu {
+    min-height: 100%;
 }
