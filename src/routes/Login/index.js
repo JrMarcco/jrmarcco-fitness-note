@@ -31,7 +31,8 @@ class LoginForm extends React.Component {
         for (let i = 0; i < 4; i++) {
             const char = chars[randomNum(0, 57)];
             code += char;
-            ctx.font = randomNum(20, 25) + 'px SimHei';     //设置字体随机大小
+            // 设置字体随机大小
+            ctx.font = randomNum(20, 25) + 'px SimHei';
             ctx.fillStyle = '#000000';
             ctx.textBaseline = 'middle';
             ctx.shadowOffsetX = randomNum(-3, 3);
@@ -41,11 +42,11 @@ class LoginForm extends React.Component {
             let x = 80 / 5 * (i + 1);
             let y = 39 / 2;
             let deg = randomNum(-25, 25);
-            /**设置旋转角度和坐标原点**/
+            // 设置旋转角度和坐标原点
             ctx.translate(x, y);
             ctx.rotate(deg * Math.PI / 180);
             ctx.fillText(char, 0, 0);
-            /**恢复旋转角度和坐标原点**/
+            // 恢复旋转角度和坐标原点
             ctx.rotate(-deg * Math.PI / 180);
             ctx.translate(-x, -y);
         }
