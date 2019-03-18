@@ -4,6 +4,7 @@ import {inject} from 'mobx-react';
 import {Card, Form, Col, Row, Input, Icon, Button, Spin, message} from 'antd';
 import {randomNum} from '../../util/commonUtils';
 import Axios from '../../util/axiosUtils';
+import {loginUrl} from '../../util/httpConstants';
 import './index.css';
 
 @withRouter @inject('appStore') @Form.create()
@@ -75,7 +76,7 @@ class LoginForm extends React.Component {
 
                 // 执行登录动作
                 this.toggle(true);
-                Axios.post('http://localhost:18002/auth/jwt/getToken', values)
+                Axios.post(loginUrl, values)
                     .then(result => {
                         this.toggle(false);
                         if (result.code === '0000') {
