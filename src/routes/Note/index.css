@@ -5,3 +5,12 @@
     height: 100vh;
     border-right: solid 1px #e1e1e1;
 }
+
+#note-sidebar .sidebar-logo {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 0;
+    text-align: center;
+    padding: 12px;
+}

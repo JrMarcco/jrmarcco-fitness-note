@@ -1,5 +1,6 @@
 import React from 'react';
-import SidebarAvatar from '../../components/Avatar/index';
+import {Icon} from 'antd';
+import SidebarAvatar from '../../components/SidebarAvatar/index';
 import './index.css';
 
 class NoteIndex extends React.Component {
@@ -7,6 +8,13 @@ class NoteIndex extends React.Component {
         return (
             <div>
                 <div id={'note-sidebar'}>
+                    <div className={'sidebar-logo'}>
+                        <image/>
+                    </div>
+
+                    <div className={'sidebar-tool'}>
+                    </div>
+
                     <SidebarAvatar/>
                 </div>
             </div>
