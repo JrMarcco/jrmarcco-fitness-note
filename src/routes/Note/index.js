@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon} from 'antd';
+import {Drawer, Icon, Button} from 'antd';
 import SidebarAvatar from '../../components/SidebarAvatar/index';
 import './index.css';
 
@@ -13,6 +13,9 @@ class NoteIndex extends React.Component {
                     </div>
 
                     <div className={'sidebar-tool'}>
+                        <div className={'tool-button'}>
+                            <Button type="primary" shape="circle" icon="plus" size={'large'} />
+                        </div>
                     </div>
 
                     <SidebarAvatar/>

@@ -4,6 +4,7 @@
     width: 75px;
     height: 100vh;
     border-right: solid 1px #e1e1e1;
+    text-align: center;
 }
 
 #note-sidebar .sidebar-logo {
@@ -11,6 +12,14 @@
     width: 75px;
     height: 75px;
     top: 0;
-    text-align: center;
     padding: 12px;
+}
+
+#note-sidebar .sidebar-tool {
+    padding-top: 105px;
+
+}
+
+#note-sidebar .sidebar-tool .tool-button {
+    height: 48px;
 }
